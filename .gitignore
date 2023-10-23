@@ -1,2 +1,3 @@
-comentarios.json
-comentarios_User.json
+.env
+reddit_comments.csv
+reddit_post.csv
