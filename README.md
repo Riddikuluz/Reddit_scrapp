@@ -68,7 +68,6 @@ for post in hot_posts:
     for comment in post.comments.list():
         # Realiza el análisis de sentimientos y guarda los resultados...
 df = pd.DataFrame(data)
-
 df.to_excel('reddit_post.xlsx', index=False)
 ```
 
