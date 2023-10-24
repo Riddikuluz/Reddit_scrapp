@@ -4,7 +4,7 @@ Este proyecto utiliza la biblioteca `praw` para interactuar con la API de Reddit
 
 ## Autores
 
-Este repositorio fue desarrollado por el grupo E, compuesto por:
+Este repositorio fue desarrollado por el grupo compuesto por:
 
 ```bash
 Jean Agurto Navarrete
