@@ -2,6 +2,15 @@
 
 Este proyecto utiliza la biblioteca `praw` para interactuar con la API de Reddit y realizar un análisis de sentimientos en las publicaciones y comentarios del subreddit 'chile'. El análisis de sentimientos se realiza utilizando la biblioteca `sentiment_analysis_spanish`.
 
+## Autores
+
+Este repositorio fue desarrollado por el grupo E, compuesto por:
+
+```bash
+Jean Agurto Navarrete
+Romina Araya Araya
+Francisco Robledo Venegas
+```
 ## Instalación
 
 Para instalar las bibliotecas necesarias, ejecuta el siguiente comando:
