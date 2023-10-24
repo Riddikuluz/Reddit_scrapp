@@ -46,7 +46,7 @@ reddit = praw.Reddit(
 )
 ```
 
-El script extrae las 300 publicaciones más populares y sus comentarios del subreddit 'chile', realiza un análisis de sentimientos sobre ellos y guarda los resultados en un archivo CSV. El análisis de sentimientos etiqueta cada publicación o comentario como 'Positivo', 'Neutral' o 'Negativo'.
+El script extrae las 450 publicaciones más populares y sus comentarios del subreddit 'chile', realiza un análisis de sentimientos sobre ellos y guarda los resultados en un archivo CSV. El análisis de sentimientos etiqueta cada publicación o comentario como 'Positivo', 'Neutral' o 'Negativo'.
 
 ```python
 # Para las publicaciones:
