@@ -7,7 +7,7 @@ Este proyecto utiliza la biblioteca `praw` para interactuar con la API de Reddit
 Para instalar las bibliotecas necesarias, ejecuta el siguiente comando:
 
 ```shell
-%pip install praw sentiment-analysis-spanish python-dotenv pandas
+%pip install praw sentiment-analysis-spanish python-dotenv
 ```
 
 ## Uso
