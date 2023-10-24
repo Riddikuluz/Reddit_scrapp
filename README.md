@@ -16,7 +16,7 @@ Francisco Robledo Venegas
 Para instalar las bibliotecas necesarias, ejecuta el siguiente comando:
 
 ```shell
-%pip install praw sentiment-analysis-spanish python-dotenv
+%pip install praw sentiment-analysis-spanish python-dotenv openpyxl
 ```
 
 ## Uso
@@ -51,28 +51,27 @@ El script extrae las 300 publicaciones más populares y sus comentarios del subr
 ```python
 # Para las publicaciones:
 sentiment = sentiment_analysis.SentimentAnalysisSpanish()
-hot_posts = reddit.subreddit('chile').hot(limit=300)
+hot_posts = reddit.subreddit('chile').hot(limit=450)
 data = []
 for post in hot_posts:
     # Realiza el análisis de sentimientos y guarda los resultados...
 df = pd.DataFrame(data)
-df.to_csv('reddit_post.csv', index=False)
+df.to_excel('reddit_comments.xlsx', index=False)
 ```
 ```python
 # Para los comentarios:
 sentiment = sentiment_analysis.SentimentAnalysisSpanish()
-hot_posts = reddit.subreddit('chile').hot(limit=300)
+hot_posts = reddit.subreddit('chile').hot(limit=450)
 data = []
 for post in hot_posts:
     post.comments.replace_more(limit=None)
     for comment in post.comments.list():
         # Realiza el análisis de sentimientos y guarda los resultados...
 df = pd.DataFrame(data)
-df.to_csv('reddit_comments.csv', index=False)
+
+df.to_excel('reddit_post.xlsx', index=False)
 ```
 
 ## Nota
 
 Recuerda reemplazar `'your-client-id'`, `'your-client-secret'`, y `'your-user-agent'` con las credenciales reales de tu aplicación de Reddit. Además, asegúrate de que tu archivo `.env` esté en el mismo directorio que tu script de Python.
-
-Si sigues teniendo problemas, ¡házmelo saber! Estoy aquí para ayudar. 😊
