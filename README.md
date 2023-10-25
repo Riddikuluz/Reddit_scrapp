@@ -46,29 +46,47 @@ reddit = praw.Reddit(
 )
 ```
 
-El script extrae las 450 publicaciones más populares y sus comentarios del subreddit 'chile', realiza un análisis de sentimientos sobre ellos y guarda los resultados en un archivo XLSX. El análisis de sentimientos etiqueta cada publicación o comentario como 'Positivo', 'Neutral' o 'Negativo'.
+El script extrae las 450 publicaciones más populares y sus comentarios del subreddit 'chile', realiza un análisis de sentimientos sobre ellos y guarda los resultados en un solo archivo XLSX. El análisis de sentimientos etiqueta cada publicación o comentario como 'Positivo', 'Neutral' o 'Negativo'.
 
 ```python
-# Para las publicaciones:
+# Crea una instancia del analizador de sentimientos
 sentiment = sentiment_analysis.SentimentAnalysisSpanish()
+
+# Descarga los posts más populares del subreddit 'chile'
 hot_posts = reddit.subreddit('chile').hot(limit=450)
+
 data = []
+count = 0
+n_comments=450
+
 for post in hot_posts:
-    # Realiza el análisis de sentimientos y guarda los resultados...
-df = pd.DataFrame(data)
-df.to_excel('reddit_comments.xlsx', index=False)
-```
-```python
-# Para los comentarios:
-sentiment = sentiment_analysis.SentimentAnalysisSpanish()
-hot_posts = reddit.subreddit('chile').hot(limit=450)
-data = []
-for post in hot_posts:
+    if count >= n_comments:
+        break
+
+    # Analiza el sentimiento del título del post y guarda los resultados
+    if post.title:
+        data.append(create_data_dict(post.title, post.created, post.author.name if post.author else '', post.permalink))
+        count += 1
+
+    # Extrae los comentarios del post
     post.comments.replace_more(limit=None)
     for comment in post.comments.list():
-        # Realiza el análisis de sentimientos y guarda los resultados...
+        if count >= n_comments:
+            break
+
+        # Analiza el sentimiento del comentario y guarda los resultados
+        if comment.body:
+            data.append(create_data_dict(comment.body, comment.created, comment.author.name if comment.author else '', comment.permalink))
+            count += 1
+
+# Crea un DataFrame con los datos
 df = pd.DataFrame(data)
-df.to_excel('reddit_post.xlsx', index=False)
+
+# Guarda el dataframe en un archivo CSV
+# df.to_csv('reddit_data.csv', index=False)
+
+# Guarda el dataframe en un archivo Excel
+df.to_excel('reddit_data.xlsx', index=False)
 ```
 
 ## Nota
